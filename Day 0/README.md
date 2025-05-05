@@ -166,3 +166,82 @@ To install Docker, we followed these steps:
     ```bash
     rsync -avz azureuser@your_server_ip_address:/path/on/server/file.txt /path/to/local/
     ```
+
+
+# Setting Up Passwordless SSH and Using rsync
+
+This document outlines the steps taken to set up passwordless SSH access for GitHub and a local server (in this case, the same machine), and how to use `rsync` for file transfers.
+
+## Step 1: Generate SSH Keys
+
+We used the `ssh-keygen` command to generate a new EdDSA SSH key pair.
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+Replace "your_email@example.com" with your actual email address.
+The private key was saved to /home/azureuser/.ssh/id_ed25519.
+The public key was saved to /home/azureuser/.ssh/id_ed25519.pub.
+A passphrase was set for the private key for added security.
+Step 2: Add the Public Key to GitHub
+The content of the public key file (/home/azureuser/.ssh/id_ed25519.pub) was copied.
+The public key was added to the SSH keys section of the GitHub account settings.
+Step 3: Add the Public Key to the Server (Local Machine)
+Ensured the .ssh directory exists and has the correct permissions:
+Bash
+
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+Appended the public key to the authorized_keys file:
+Bash
+
+cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
+Set the correct permissions for the authorized_keys file:
+Bash
+
+chmod 600 ~/.ssh/authorized_keys
+Step 4: Test SSH Connection to GitHub
+The following command was used to test the connection to GitHub:
+
+Bash
+
+ssh -T git@github.com
+This confirmed that the SSH key was correctly configured for GitHub, and we received a message:
+
+Hi PAPIL001! You've successfully authenticated, but GitHub does not provide shell access.
+Step 5: Test SSH Connection to the Server (Local Machine)
+Initially, the command ssh azureuser@localhost prompted for the passphrase of a potentially existing id_rsa key.
+
+To explicitly use the newly generated key, the following command was used:
+
+Bash
+
+ssh -i ~/.ssh/id_ed25519 azureuser@localhost
+This successfully logged into the local machine after entering the passphrase for the id_ed25519 key.
+
+Step 6: Using SSH Agent for Convenience (Recommended)
+To avoid entering the passphrase repeatedly, the SSH agent was used:
+
+Start the SSH Agent:
+Bash
+
+eval "$(ssh-agent -s)"
+Add the private key to the agent (you'll be prompted for the passphrase):
+Bash
+
+ssh-add ~/.ssh/id_ed25519
+After adding the key to the agent, subsequent ssh azureuser@localhost commands should not require a passphrase during the current session.
+Step 7: Using rsync for File Transfers
+rsync is a command-line tool for synchronizing files and directories efficiently. Here are some example uses:
+
+Copying files from your local machine to the server:
+Bash
+
+rsync -avz /path/to/local/files azureuser@localhost:/path/to/remote/directory
+Copying files from the server to your local machine:
+Bash
+
+rsync -avz azureuser@localhost:/path/to/remote/files /path/to/local/directory
+Synchronizing directories (keeping them identical):
+Bash
+
+rsync -avz --delete /path/to/local/directory/ azureuser@localhost:/path/to/remote/direc
