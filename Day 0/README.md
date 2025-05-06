@@ -245,3 +245,39 @@ Synchronizing directories (keeping them identical):
 Bash
 
 rsync -avz --delete /path/to/local/directory/ azureuser@localhost:/path/to/remote/direc
+
+
+
+# papil-hello-test-may6-0933
+
+[![TestPyPI](https://img.shields.io/pypi/v/papil-hello-test-may6-0933?color=blue)](https://test.pypi.org/project/papil-hello-test-may6-0933/)
+
+A simple Python package that greets the world or a specified name. This package was created as part of a learning exercise.
+
+## Installation
+
+You can install this package from TestPyPI using pip:
+
+```bash
+pip install --index-url [https://test.pypi.org/simple/](https://test.pypi.org/simple/) papil-hello-test-may6-0933
+
+
+Usage
+After installation, you can use the greet function from the azureuser_hello.hello module:
+
+Python
+
+from azureuser_hello.hello import greet
+
+greet()  # Output: Hello, World!
+greet("Your Name")  # Output: Hello, Your Name!
+If you created a command-line script (as in the earlier example with typer), you would also describe how to use that here. For example:
+
+Bash
+
+papil-greet  # If you set up a script
+papil-greet AzureUser  # If it accepts arguments
+Link to Package on TestPyPI
+You can find this package on TestPyPI at the following URL:
+
+https://www.google.com/url?sa=E&amp;source=gmail&amp;q=https://test.pypi.org/project/papil-hello-test-may6-0933/
