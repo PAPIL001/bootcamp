@@ -281,3 +281,19 @@ Link to Package on TestPyPI
 You can find this package on TestPyPI at the following URL:
 
 https://www.google.com/url?sa=E&amp;source=gmail&amp;q=https://test.pypi.org/project/papil-hello-test-may6-0933/
+
+You can also use the command-line interface:
+
+Bash
+
+papil-greet
+papil-greet --name AnotherUser
+papil-greet --name StyledUser --color blue
+Completed Exercises
+ex-basics-1 (Initial Package Creation): Created a basic Python package with a greeting function.
+ex-basics-2 (Installing New Packages): Enhanced the application to use the rich library for styled output.
+ex-basics-3 (Writing Command Line Application): Implemented a command-line interface using typer.
+Demo
+You can see a demonstration of installing and running the command-line application here:
+
+https://asciinema.org/a/gmLS498tUTNIX4Et115WAs52G
