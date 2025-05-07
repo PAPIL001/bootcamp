@@ -1,0 +1,9 @@
+[project]
+version = "0.1.0-alpha"
+
+# or for dynamic versioning
+# version = "0.1.0"
+# Use setuptools_scm to pull version from git tags
+
+# Expected behavior:
+# Version shown as 0.1.0-alpha when installed or used via CLI
