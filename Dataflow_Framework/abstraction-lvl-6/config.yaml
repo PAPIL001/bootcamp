@@ -1,0 +1,9 @@
+nodes:
+  - tag: start
+    type: processors.start
+  - tag: filters
+    type: processors.filters
+  - tag: formatters
+    type: processors.formatters
+  - tag: output
+    type: processors.output

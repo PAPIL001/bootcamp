@@ -1,0 +1,4 @@
+Info: System started
+Error: Failed to connect
+Debug: Initializing module
+Error: Timeout occurred

@@ -1,0 +1,5 @@
+pipeline:
+  - type: processors.counter.LineCounter
+  - type: processors.splitter.Splitter
+    options:
+      delimiter: " "

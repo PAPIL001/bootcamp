@@ -1,0 +1,4 @@
+Hello!!
+error: Something went wrong
+warn: Just a warning
+error: Another critical issue

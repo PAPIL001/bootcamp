@@ -1,0 +1,6 @@
+filters:
+  - name: "filter_error_lines"
+    condition: "Error"
+formatters:
+  - name: "format_error_line"
+    format: "uppercase"

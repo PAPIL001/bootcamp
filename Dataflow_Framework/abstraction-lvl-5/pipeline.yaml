@@ -1,0 +1,28 @@
+nodes:
+  - name: input
+    type: trim
+  - name: tagger1
+    type: tag_warn
+  - name: tagger2
+    type: tag_error
+  - name: count
+    type: count
+  - name: printer
+    type: print
+
+edges:
+  - from: input
+    to: tagger1
+  - from: tagger1
+    to: tagger2
+  - from: tagger2
+    to: count
+    tag: errors
+  - from: tagger2
+    to: count
+    tag: warnings
+  - from: tagger2
+    to: printer
+    tag: general
+  - from: count
+    to: printer
